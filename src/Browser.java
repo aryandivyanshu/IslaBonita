@@ -1,5 +1,7 @@
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.net.*;
+import java.io.IOException;
 
 public class Browser {
 
@@ -36,8 +38,34 @@ public class Browser {
 
     }
 
-    //takes ip number as input and return html content received
+        //takes ip number as input and return html content received
     private String sendHTTPRequest(String ipAddress){
+
+
+        //establishing a TCP aka Transmission Control Protocol connection with the web server at that IP address
+        int serverPort = 443; // Server port number
+        //tf is a port n why does serverPort = 80; works too lol
+
+        try {
+            Socket socket = new Socket(ipAddress, serverPort);
+            System.out.println("Connected to server: " + socket.getInetAddress().getHostAddress() + ":" + socket.getPort());
+
+            // No need to send or receive data, just keep the connection open if needed
+            // ...
+
+            // Close the connection when done
+            socket.close();
+        }
+
+        catch (UnknownHostException e) {
+            System.err.println("Unknown host: " + ipAddress);
+        }
+
+        catch (IOException e) {
+            System.err.println("IOException: " + e.getMessage());
+        }
+
         return "<html> <body>HTTP CONTENT</body> </html>";
+
     }
 }

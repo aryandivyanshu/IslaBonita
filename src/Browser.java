@@ -12,12 +12,12 @@ public class Browser {
 
 
         //converts the user input address to ip number looking it up at DNS
-    public String findIPAddress(String address){
+    private String findIPAddress(String address){
         return "ip number";
     }
 
     //takes ip number as input and return html content received
-    public  String sendHTTPRequest(String ip_number){
+    private String sendHTTPRequest(String ip_number){
         return "<html> <body>HTTP CONTENT</body> </html>";
     }
 }
